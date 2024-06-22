@@ -1,4 +1,4 @@
-# import jwt
+import jwt
 import json
 
 from django.urls import reverse
@@ -125,22 +125,22 @@ def verification_resend(request):
     return render(request, 'resend-confirmation.html')
 
 
-# def verify_email(request):
-#     token = request.GET.get('token')
-#     try:
-#         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
-#         email = payload['email']
+def verify_email(request):
+    token = request.GET.get('token')
+    try:
+        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
+        email = payload['email']
 
-#         user = get_user_model().objects.get(email=email)
-#         user.is_active = True
-#         user.save()
+        user = get_user_model().objects.get(email=email)
+        user.is_active = True
+        user.save()
 
-#         send_token(email)
+        send_token(email)
 
-#         return redirect('login')  # Redirect to a success page
+        return redirect('login')  # Redirect to a success page
 
-#     except jwt.ExpiredSignatureError:
-#         return render(request, 'email-verification.html', context={'error': 'Token expired, request another'})
+    except jwt.ExpiredSignatureError:
+        return render(request, 'email-verification.html', context={'error': 'Token expired, request another'})
 
-#     except (jwt.DecodeError, Exception):
-#         return render(request, 'email-verification.html', context={'error': 'Unknown error occurred, request a new token'})
+    except (jwt.DecodeError, Exception):
+        return render(request, 'email-verification.html', context={'error': 'Unknown error occurred, request a new token'})
