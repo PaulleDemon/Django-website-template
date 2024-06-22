@@ -67,11 +67,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True, null=False, blank=False) # used only for staff/admin users
 
     dp = ContentTypeRestrictedFileField(upload_to='dp/', content_types=['image/png', 'image/jpeg'], 
-                        max_upload_size=5242880, default='dp/default-dp.svg', null=True, blank=True)
+                                        max_upload_size=5242880,  null=True, blank=True) # display profile
 
     ip_address = models.GenericIPAddressField(null=True, blank=True) # the ip is stored to prevent attacks on server
 
-    is_admin = models.BooleanField(default=False)
+    is_admin = models.BooleanField(default=False) # just an indicator
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     

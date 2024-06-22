@@ -8,7 +8,7 @@ from django.forms.renderers import get_default_renderer
 class JSPath:
     def __html__(self):
         return (
-            f'<script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>'
+            f'<script src="https://cdn.jsdelivr.net/npm/trix@2.1.1/dist/trix.umd.min.js"></script>'
         )
 
 
@@ -26,7 +26,7 @@ class JSCode:
 class CSSPath:
     def __html__(self):
         return (
-            f'<link rel="stylesheet" href="https://unpkg.com/trix@2.0.8/dist/trix.css">'
+            f'<link href="https://cdn.jsdelivr.net/npm/trix@2.1.1/dist/trix.min.css" rel="stylesheet">'
         )
 
 
@@ -41,10 +41,13 @@ class CSSAdminCode:
                 trix-toolbar .trix-button {
                     background-color: #d1d1d1 !important;
                 }
-                trix-editor > h2 {
-                    font-size: 1.1em !important;
+                .trix-editor > h2 {
+                    font-size: 1.5em !important;
                     line-height: 1.2;
+                    font-weight: 500;
                     margin: 0;
+                    background: transparent;
+                    color: var(--body-fg);
                 }
             </style>
             """

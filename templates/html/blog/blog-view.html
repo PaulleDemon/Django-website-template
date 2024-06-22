@@ -1,4 +1,4 @@
-{% extends './html/base.html' %}
+{% extends 'base.html' %}
 
 {% load tz %}
 {% load static %}
@@ -23,6 +23,12 @@
 
     <link rel="stylesheet" href="{% static "./css/blog/blog.css" %}">
 
+    <style>
+        figcaption{
+            display: none;
+        }
+    </style>
+
 {% endblock head_tags %}
 
 
@@ -31,32 +37,13 @@
             lg:tw-px-[30%] md:tw-px-[10%]
             tw-place-items-center tw-p-4">
 
-    {% if request.user.is_admin or request.user == blog.user %}
-
-        <a href="{% url "create-blog" %}?edit={{blog.id}}" 
-            class="btn btn-success tw-w-[150px] tw-m-[2%] tw-ml-auto bi bi-pencil-square">
-            Edit
-        </a>
-
-    {% endif %}
-
-    {% comment %} <div class="tw-w-[250px] tw-min-h-[100px] tw-gap-4 tw-list-none
-                tw-text-sm tw-leading-9 max-md:tw-hidden
-                tw-fixed tw-top-[20%] tw-left-[4%] tw-z-10" id="toc-container">
-    </div> {% endcomment %}
-
     <div class="tw-text-4xl max-sm:tw-text-3xl tw-mt-6 tw-font-semibold tw-leading-snug tw-w-full">
         <h1 class="tw-text-4xl max-sm:tw-text-3xl tw-font-semibold tw-leading-snug tw-w-full">{{blog.title}}</h1>
-        {% if not blog.published %}
-            <span class="tw-text-sm tw-text-red-500 tw-font-medium tw-ml-auto">
-                <i class="bi bi-vector-pen"></i>
-                <span>Draft</span>
-            </span>
-        {% endif %}
     </div>
+    
     <div class="tw-mt-6 tw-w-full tw-text-lg 
                 tw-text-justify tw-leading-relaxed" id="quill-editor">
-            {{blog.body.html|safe}}
+            {{blog.body|safe}}
     </div>
 
     <div class="tw-m-2 tw-p-2 tw-min-w-[30px] tw-min-h-[80px] 
@@ -67,19 +54,6 @@
                             md:tw-text-2xl
                             max-sm:tw-text-xl 
                             lg:tw-right-[10%] max-sm:tw-rounded-full">
-        <a class="tw-m-2 tw-cursor-pointer social-share-link" id="twitter-share"  
-            target="_blank" rel="noreferrer" aria-label="share to twitter">
-            <i class="bi bi-twitter-x"></i>
-            {% comment %} 𝕏 {% endcomment %}
-        </a>
-        <a class="tw-m-2 tw-cursor-pointer social-share-link" id="linkedin-share" 
-            target="_blank" rel="noreferrer"  aria-label="share to linkedin">
-            <i class="bi bi-linkedin"></i>
-        </a>
-        <a class="tw-m-2 tw-cursor-pointer social-share-link" id="facebook-share" 
-            target="_blank" rel="noreferrer"  aria-label="share to facebook">
-            <i class="bi bi-facebook"></i>
-        </a>
         <div class="tw-m-2 tw-cursor-pointer social-share-link" id="copy-link" aria-label="copy link">
             <i class="bi bi-share-fill"></i>
         </div>
@@ -110,45 +84,7 @@
 
     </div>
     
-    {% if blog.relatedblog_set.exists %}
-        <hr class="tw-divide-y-2 tw-divide-black">
-        <div class="tw-text-3xl">
-            Read realated articles
-        </div>
-        <div class="tw-flex tw-flex-wrap  tw-w-full ">
-            {% for related_blog in blog.relatedblog_set.all %}
-                {% if request.user.is_admin or related_blog.related_blog.is_published == True %}
-                    <div class="tw-shadow-lg tw-m-5 tw-h-[400px] tw-w-[400px] 
-                                tw-rounded-lg tw-flex tw-flex-col tw-overflow-hidden">
-                        <a href="{% url 'get-blog' blogid=related_blog.related_blog.blog_id title=related_blog.related_blog.title|slugify %}" class="tw-text-md tw-h-full tw-max-h-full">
-                            
-                            {% with first_image=related_blog.related_blog.blogimage_set.first %}
-                                {% if first_image %}
-                                    <div class="tw-h-[250px] tw-w-full tw-rounded tw-overflow-clip">
-                                        <img src="{{ first_image.image.url }}" class="tw-object-cover 
-                                                                                        tw-w-full" 
-                                                alt="Image Thumbnail for {{ related_blog.related_blog.title }}">
-                                    </div>
-                                {% endif %}
-                            {% endwith %}
-                            <div class="tw-p-5 tw-text-xl tw-font-medium tw-max-w-full tw-h-[150px] 
-                                        tw-overflow-clip tw-text-ellipsis">
-                                {{ related_blog.related_blog.title }}
-                                {% if not related_blog.related_blog.published %}
-                                    <span class="tw-text-sm tw-text-red-500 tw-ml-auto">
-                                        <i class="bi bi-vector-pen"></i>
-                                        <span>Draft</span>
-                                    </span>
-                                {% endif %}
-                            </div>
-                        </a>
-                    </div>
-                {% endif %}
-            {% endfor %}
-        </div>
-    {% endif %}
-
-
+    
 </div>
 
 <!-- Blog view provided by https://foxcraft.tech -->
@@ -165,11 +101,6 @@
     const facebook = document.getElementById("facebook-share")
     const copy_link = document.getElementById("copy-link")
 
-    twitter.href = `https://twitter.com/share?url=${window.location.href}&text=${`Check out this blog: {{blog.title}}`}`
-    linkedin.href = `https://www.linkedin.com/shareArticle?mini=true&url=${window.location.href}&title=${`Check out this blog: {{blog.title}}`}"`
-    {% comment %} reddit.href = `https://reddit.com/submit?url=${window.location.href}&title=${encodeURIComponent(`Check out this blog: {{blog.title}}`)}` {% endcomment %}
-    facebook.href = `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`
-    
     copy_link.onclick = () => {
         navigator.clipboard.writeText(window.location.href).then(function() {
             toastAlert(null, "Link copied")

@@ -46,25 +46,20 @@
                             {{blog.title}}
                         </h2>
                     </span>
-                    {% if not blog.published %}
-                        <span class="tw-text-sm tw-text-red-500 tw-ml-auto">
-                            <i class="bi bi-vector-pen"></i>
-                            <span>Draft</span>
-                        </span>
-                    {% endif %}
+                
                 </div>
                 <div class="tw-mt-4 tw-mb-[2%] tw-w-full tw-p-2 tw-text-justify">
                     {% if blog.meta_description %}
                         {{blog.meta_description}} <span class="!tw-text-blue-500" style="color: #3495eb;">continue reading...</span>
                     {% else %}
-                        {{blog.body.html|strip_html_tags|slice:":300"|safe}} <span class="!tw-text-blue-500" style="color: #3495eb;">continue reading...</span>
+                        {{blog.body|strip_html_tags|slice:":300"|safe}} <span class="!tw-text-blue-500" style="color: #3495eb;">continue reading...</span>
                     {% endif %}
                 </div>
                 <div class="tw-text-sm tw-text-gray-500 tw-text-right">
                     {% utc_to_local blog.datetime request.COOKIES.user_timezone %}
                 </div>
             </a>
-            <hr>
+            {% comment %} <hr> {% endcomment %}
         {% endfor %}
     </div>
     {% if blogs.has_previous or blogs.has_next %}

@@ -13,13 +13,6 @@ Trix.config.blockAttributes.heading3 = {
     terminal: true
 }
 
-Trix.config.blockAttributes.heading4 = {
-    tagName: "h4",
-    breakOnReturn: true,
-    group: false,
-    terminal: true
-}
-
 
 function getCookie(name) {
     let cookieValue = null;
@@ -37,7 +30,40 @@ function getCookie(name) {
     return cookieValue;
 }
 
-addEventListener("trix-attachment-add", function (event) {
+let fileUploadBtn = document.querySelector("[data-trix-action='attachFiles']")
+
+
+window.addEventListener('trix-file-accept', function(event) {
+  
+    const acceptedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']
+    if (!acceptedTypes.includes(event.file.type)) {
+        event.preventDefault()
+        alert("Only support attachment of jpeg or png files")
+    }
+
+    // if the id is null, then save the draft before adding the image
+    const id = document.querySelector(".field-id .readonly")
+
+    if (id.innerText === '-'){
+        const saveBtn = document.querySelector("input[name='_continue']")
+        saveBtn.focus()
+        saveBtn.click()
+        
+        event.preventDefault()
+
+        return null
+    }
+
+})
+
+// Trix.config.attachments
+
+document.addEventListener("trix-attachment-add", function (event) {
+
+    if (!event.attachment.file) {
+        event.attachment.remove()
+    }
+
     if (event.attachment.file) {
         handleUpload(event.attachment)
     }
@@ -58,17 +84,23 @@ function handleUpload(attachment) {
 function uploadFile(file, progressCallback, successCallback) {
     var formData = new FormData()
     var xhr = new XMLHttpRequest()
+
+    const id = document.querySelector(".field-id .readonly")
+
     formData.append("Content-Type", file.type)
-    formData.append("file", file)
-    xhr.open("POST", "/trix-editor/upload/", true)
+    
+    formData.append("image", file)
+    formData.append("blog", id.innerText) // id of the blog
+
+    xhr.open("POST", "/blog/image/upload/", true)
     xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken"))
     xhr.upload.addEventListener("progress", function (event) {
         progressCallback(event.loaded / event.total * 100)
     })
     xhr.addEventListener("load", function (event) {
-        if (xhr.status === 200) {
+        if (xhr.status === 201) {
             let attributes = {
-                url: JSON.parse(xhr.responseText).attachment_url
+                url: JSON.parse(xhr.responseText).url
             }
             successCallback(attributes)
         }
@@ -77,17 +109,20 @@ function uploadFile(file, progressCallback, successCallback) {
 }
 
 window.addEventListener("trix-initialize", event => {
-    console.log("initialized")
 
     const { toolbarElement } = event.target
     const h1Button = toolbarElement.querySelector("[data-trix-attribute=heading1]")
-    h1Button.insertAdjacentHTML("afterend", `
-        <button type="button" class="trix-button" data-trix-attribute="heading3" 
-                title="Heading 3" tabindex="-1" data-trix-active="">H3</button>
-    `)
+    
     h1Button.insertAdjacentHTML("afterend", `
         <button type="button" class="trix-button" data-trix-attribute="heading2" 
                 title="Heading 2" tabindex="-1" data-trix-active="">H2</button>
     `)
+    const h2Button = toolbarElement.querySelector("[data-trix-attribute=heading2]")
+
+    h2Button.insertAdjacentHTML("afterend", `
+        <button type="button" class="trix-button" data-trix-attribute="heading3" 
+        title="Heading 3" tabindex="-1" data-trix-active="">H3</button>
+    `)
+    
     
 })
