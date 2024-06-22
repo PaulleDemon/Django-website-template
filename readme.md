@@ -18,7 +18,7 @@ This template can help you save hours of work, allowing you to deliver a product
 - Robots.txt
 - Google analytics
 - Custom user model.
-- Tailwind css setup for rapid development (note: the tailwind classes are prefixed with tw-, to differentiate them)
+- Tailwind css setup for rapid development (note: the tailwind classes are prefixed with `tw-`, to differentiate them)
 
 ### Table of contents
 - [Django website template (production ready)](#django-website-template-production-ready)
@@ -151,6 +151,11 @@ To add scripts at the end of the elements
 ## Deployment:
 
 You can make use of Railway to deploy your own instance. 
+
+<a href="https://railway.app?referralCode=BfMDHP">
+  <img src="railway.png" alt="railway icon" height="50px"/>
+</a>
+
 Link to deploy to [Railway.app](https://railway.app?referralCode=BfMDHP)
 
 once you complete make sure to 
@@ -161,6 +166,8 @@ and set
 ```
 DEBUG=0
 ```
+**Generate secret key**
+To generate secret key use `from django.core.management.utils import get_random_secret_key` then `get_random_secret_key()` in your python shell
 
 **Note:** don't forget to set the sites to your domain instead of example.com in the admin panel
 
