@@ -1,8 +1,6 @@
 
 from django.conf import settings
 
-from . import admin as third_party_admin
-
 from django.shortcuts import redirect
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
