@@ -1,9 +1,8 @@
-import jwt
+# import jwt
 import json
 
 from django.urls import reverse
 from django.conf import settings
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
@@ -56,49 +55,11 @@ def login_view(request):
     return render(request, 'login.html', {'error': f'Invalid email or password'})
 
 
-@require_http_methods(["POST", "GET"])
-def guest_login_view(request):
-
-    next_url = request.GET.get("next", "")
-
-    if request.method == "GET":
-
-        if request.user.is_authenticated:
-            if next_url and next_url != request.path:
-                return redirect(next_url)
-            
-            return redirect('home')
-
-        return render(request, 'login.html', {'next_url': next_url})
-
-    elif request.method == "POST":
-
-        email = request.POST.get("email")
-        password = request.POST.get("password")
-        user = authenticate(request, username=email, password=password)
-
-        if user is not None:
-            if user.has_perms(['blog.add_blog', 'blog.change_blog', 'blog.view_blog']) or user.is_admin:
-                login(request, user)
-
-                if next_url and next_url != request.path:
-                    return redirect(next_url)
-                
-                return redirect('home')
-            
-            else:
-                # logout(request)
-                return render(request, 'login.html', {'error': f"you don't have permission", 'next_url': next_url}, status=303)
-
-        else:
-            return render(request, 'login.html', {'error': f'Invalid email or password', 'next_url': next_url}, status=401)
-
-
-
 def logout_view(request):
     logout(request)
 
     return redirect('home')
+
 
 @require_http_methods(["GET", "POST"])
 def signup_view(request):
@@ -164,22 +125,22 @@ def verification_resend(request):
     return render(request, 'resend-confirmation.html')
 
 
-def verify_email(request):
-    token = request.GET.get('token')
-    try:
-        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
-        email = payload['email']
+# def verify_email(request):
+#     token = request.GET.get('token')
+#     try:
+#         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
+#         email = payload['email']
 
-        user = get_user_model().objects.get(email=email)
-        user.is_active = True
-        user.save()
+#         user = get_user_model().objects.get(email=email)
+#         user.is_active = True
+#         user.save()
 
-        send_token(email)
+#         send_token(email)
 
-        return redirect('login')  # Redirect to a success page
+#         return redirect('login')  # Redirect to a success page
 
-    except jwt.ExpiredSignatureError:
-        return render(request, 'email-verification.html', context={'error': 'Token expired, request another'})
+#     except jwt.ExpiredSignatureError:
+#         return render(request, 'email-verification.html', context={'error': 'Token expired, request another'})
 
-    except (jwt.DecodeError, Exception):
-        return render(request, 'email-verification.html', context={'error': 'Unknown error occurred, request a new token'})
+#     except (jwt.DecodeError, Exception):
+#         return render(request, 'email-verification.html', context={'error': 'Unknown error occurred, request a new token'})
