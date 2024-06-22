@@ -15,7 +15,7 @@ class InlineBlogImgAdmin(admin.StackedInline):
 class BlogAdmin(admin.ModelAdmin):
     
     search_fields = ['title']
-    list_display = ['title', 'datetime', 'draft']
+    list_display = ['title', 'slug', 'datetime', 'draft']
 
     list_filter_submit = True
     list_filter = ['datetime']

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load custom_tags %}
+
+{% block title %}Team Members - {% endblock title %}
+{% block description %}Learn about our team members{% endblock description %}
+
+
+{% block content %}
+    <section class="tw-w-full tw-flex 
+                    tw-flex-col
+                    tw-place-content-center 
+                    tw-px-[10%]
+                    tw-p-4
+                    tw-gap-5
+                    tw-min-h-[100vh]
+                    tw-place-items-center
+                    max-md:tw-flex-col
+                    tw-overflow-hidden
+                    "
+                >
+
+        <div class="tw-w-full tw-flex tw-flex-wrap tw-p-[5%] tw-justify-around tw-gap-10">
+            {% for member in team %}
+
+                <div class="tw-max-w-[400px] tw-flex tw-flex-col tw-gap-6 tw-items-center">
+                    <div class="tw-w-[250px] tw-h-[250px] tw-overflow-hidden tw-rounded-[100%]">
+                        <img src="{{member.dp.url}}" alt="photo of {{member.name}}" 
+                            class="tw-w-full tw-h-full tw-object-cover">  
+                    </div>
+                    <h2 class="tw-text-3xl tw-font-semibold">{{member.name}}</h2>
+                    <div class="tw-flex tw-gap-4">
+                        {% for social in member.social_set.all  %}
+                            {% comment %} {{link_types.TWITTER}} {% endcomment %}
+                            <a href="{% if social.link_type == link_types.EMAIL %}mailto:{% endif %}{{social.link}}" 
+                                    class="tw-text-xl" target="_blank" rel="noreferrer">
+                                {% if social.link_type == link_types.EMAIL %}
+                                    <i class="bi bi-envelope-fill"></i>
+                                {% elif social.link_type == link_types.TWITTER %}
+                                    <i class="bi bi-twitter-x"></i>
+                                {% elif social.link_type == link_types.INSTAGRAM %}
+                                    <i class="bi bi-instagram"></i>
+                                {% elif social.link_type == link_types.FACEBOOK %}
+                                    <i class="bi bi-facebook"></i>
+                                {% elif social.link_type == link_types.YOUTUBE %}
+                                    <i class="bi bi-youtube"></i>
+                                {% elif social.link_type == link_types.TWITCH %}
+                                    <i class="bi bi-twitch"></i>
+                                {% elif social.link_type == link_types.LINKEDIN %}
+                                    <i class="bi bi-linkedin"></i>
+                                {% else %}
+                                    <i class="bi bi-link-45deg"></i>
+                                {% endif %}
+                                
+                            </a>
+                        {% endfor %}
+                    </div>
+                    {% if member.designation %}
+                        <h3 class="tw-text-lg tw-font-medium">{{member.designation}}</h3>
+                    {% endif %}
+                    <p class="tw-text-lg tw-text-justify">
+                        {{member.description}}
+                    </p>
+                </div>
+            
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock content %}

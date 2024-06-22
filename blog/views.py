@@ -10,10 +10,10 @@ from .froms import BlogImageForm
 from utils.decorators import login_required_rest_api
 
 @require_http_methods(['GET'])
-def get_blog(request, blogid, title=None):
+def get_blog(request, slug):
     try:
         
-        blog = Blog.objects.get(blog_id=blogid, draft=False)
+        blog = Blog.objects.get(slug=slug, draft=False)
 
 
         return render(request, 'html/blog/blog-view.html', {

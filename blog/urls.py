@@ -12,7 +12,7 @@ urlpatterns = [
     path('image/upload/', upload_image, name='image-upload'),
     path('list/', list_blogs, name='list-blogs'),
 
-    path('<str:blogid>/', get_blog, name='get-blog'),
-    path('<str:blogid>/<slug:title>/', get_blog, name='get-blog'),
+    # path('<str:blogid>/', get_blog, name='get-blog'),
+    path('<slug:slug>/', get_blog, name='get-blog'),
     
 ]
