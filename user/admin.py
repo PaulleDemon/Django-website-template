@@ -78,7 +78,7 @@ class CustomUserAdmin(UserAdmin, admin.ModelAdmin):
     def get_form(self, request, obj=None, change=False, **kwargs):
         form = super().get_form(request, obj=obj, change=change, **kwargs)
         # print("change: ", change, obj)
-        if change:
+        if change and "is_active" in form.base_fields:
             form.base_fields["is_active"].help_text = "If the user is inactive, they cannot login to any login forms. Even if active, they still won't be able to access admin panel."
             form.base_fields["is_staff"].help_text = "Indicates that the user is staff and can login to admin dashboards, but needs to have explicit permissions to access other areas."
             form.base_fields["is_admin"].help_text = "Indicates that the user is staff and admin and can login to admin dashboards, has special permissions for such as blogs, but needs to have explicit permissions to access other areas."
