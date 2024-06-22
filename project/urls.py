@@ -18,7 +18,7 @@ from .views import (rate_limiter_view, view_404,
                         handler_403, home_view) #subscribe_view
 
 from .sitemaps import StaticSitemap
-
+from blog.sitemaps import BlogSitemap
 
 handler404 = view_404
 
@@ -30,7 +30,7 @@ admin.site.site_title = 'Admin site'
 admin.site.site_url = "" 
 
 
-sitemap_dict = {'sitemaps': {'static': StaticSitemap}}
+sitemap_dict = {'sitemaps': {'static': StaticSitemap, 'blog': BlogSitemap}}
 
 
 urlpatterns = [

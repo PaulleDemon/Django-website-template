@@ -1,7 +1,37 @@
 # Django website template (production ready)
 Tired of writing Django project from scratch? use this template to speed up your Django development and deliver your project within few hours, instead of weeks or months.
 
-### Local development
+### Why use Django website template?
+Using a Django template can save you a lot of time, which is a huge benefit. Most clients don't care if you start from scratch or use a template; they just want their problem solved quickly. Whether you use Django or another framework usually doesn't matter to them as long as the job gets done efficiently.
+
+This template can help you save hours of work, allowing you to deliver a production-ready website in just a few hours.
+
+### What features does Django template include?
+- Production ready, you can immediately deploy this to cloud such as Railway.app, Render.com etc.
+- Comes with a landing page that you can modify.
+- Has blog with Trix WYSIWYG editor built into the admin panel.
+- Technical SEO optimization.
+- Dynamic Sitemap.xml
+- Robots.txt
+- Tailwind css setup, build your site faster with tailwind css
+
+### Table of contents
+- [Django website template (production ready)](#django-website-template-production-ready)
+    - [Why use Django website template?](#why-use-django-website-template)
+    - [What features does Django template include?](#what-features-does-django-template-include)
+    - [Table of contents](#table-of-contents)
+  - [Local development](#local-development)
+    - [Admin superuser](#admin-superuser)
+  - [Customizing](#customizing)
+    - [Adding title, description to page](#adding-title-description-to-page)
+  - [Deployment:](#deployment)
+      - [Create a firebase credential file](#create-a-firebase-credential-file)
+      - [Deploying credential file to production](#deploying-credential-file-to-production)
+  - [Images credits](#images-credits)
+
+
+
+## Local development
 
 
 Before you start customizing the template follow the below steps:
@@ -83,7 +113,38 @@ To create a admin superuser use the following in terminal
 python manage.py createsuperuser
 ```
 
-### Deployment:
+## Customizing
+
+All html, css, js and assets lies inside the templates.
+- To modify the landing page, update `home.html`.
+- To add link to header and footer or modify head tags, check `base.html`.
+- extend `base.html` to have the same footer and header.
+
+### Adding title, description to page
+To add title to a page use the following tags
+```py
+{% block title %}lorem impsum {% endblock title %}
+{% block description %}lorem impsum{% endblock description %} #meta description
+
+{% block socialTitle %}{{blog.title}} | {% endblock socialTitle %} # open graph title, for socials
+{% block socialDescription %}{{blog.meta_description}}{% endblock socialDescription %} # open graph description, for socials
+{% block pageType %}article{% endblock pageType %}
+{% block pageImage %}{% endblock pageImage %} # social image
+```
+
+To add additional head tags
+
+```py
+{% block head_tags %}lorem impsum {% endblock head_tags %}
+```
+To add scripts at the end of the elements
+```
+{% block scripts %}
+    <script src="{% static "" %}" />
+{% endblock scripts %}
+```
+
+## Deployment:
 
 You can make use of Railway to deploy your own instance. 
 Link to deploy to [Railway.app](https://railway.app?referralCode=BfMDHP)
@@ -116,7 +177,7 @@ base64 firebase-cred.json > encoded.txt
 Now copy the contents of encoded.txt and paste it in `FIREBASE_ENCODED="wedde"` variable
 
 
-### Images credits
+## Images credits
 Images are taken from free to use sites such as 
 1. unsplash - https://unsplash.com/
 2. Pexels - https://www.pexels.com/

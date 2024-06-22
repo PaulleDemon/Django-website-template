@@ -13,10 +13,10 @@ class BlogSitemap(Sitemap):
     protocol = 'https'
 
     def items(self):
-        return Blog.objects.all()
+        return Blog.objects.filter(draft=False)
 
     def lastmod(self, obj):
         return obj.datetime
     
     def location(self,obj):
-        return '/blog/%s/%s' % (obj.blog_id, slugify(obj.title))
+        return '/blog/%s' % (obj.slug)
