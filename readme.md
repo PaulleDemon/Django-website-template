@@ -20,7 +20,7 @@ This template can help you save hours of work, allowing you to deliver a product
 - Custom user model.
 - Tailwind css setup for rapid development (note: the tailwind classes are prefixed with `tw-`, to differentiate them)
 
-### Do I need to be an expert to use this?
+### Do I need to be an expert in Django to use this?
 A basic understanding of HTML, CSS, and JavaScript is all you need to get started. However, if you want to add custom pages or make more advanced modifications, having at least some foundational knowledge will be really helpful.
 
 ### Demo
@@ -33,18 +33,21 @@ demo123*
 ```
 ### Table of contents
 
-- [Why use Django website template?](#why-use-django-website-template)
-- [What features does Django template include?](#what-features-does-django-template-include)
-- [Do I need to be an expert to use this?](#do-i-need-to-be-an-expert-to-use-this)
+- [Django website template (production ready)](#django-website-template-production-ready)
+  - [Why use Django website template?](#why-use-django-website-template)
+  - [What features does Django template include?](#what-features-does-django-template-include)
+  - [Do I need to be an expert in Django to use this?](#do-i-need-to-be-an-expert-in-django-to-use-this)
+  - [Demo](#demo)
   
 - [Local development](#local-development)
-    - [Admin superuser](#admin-superuser)
+  - [Admin superuser](#admin-superuser)
 - [Customizing](#customizing)
-    - [Adding title, description to page](#adding-title-description-to-page)
+  - [Adding title, description to page](#adding-title-description-to-page)
 - [Deployment:](#deployment)
-      - [Create a firebase credential file](#create-a-firebase-credential-file)
-      - [Deploying credential file to production](#deploying-credential-file-to-production)
+    - [Create a firebase credential file](#create-a-firebase-credential-file)
+    - [Deploying credential file to production](#deploying-credential-file-to-production)
 - [Images credits](#images-credits)
+
 
 
 
