@@ -1,8 +1,8 @@
 import jwt
 from datetime import datetime, timedelta
 from django.conf import settings
+from django.core.mail import send_mass_mail, send_mail
 
-from .tasks import send_mail_celery
 from .common import get_name_from_email
 
 
@@ -27,5 +27,5 @@ def send_token(email):
     subject = f"Email confirmation link"
     message = f"""Hi {name},\nThanks for signing up. Follow the link to confirm your email {settings.DOMAIN}/user/email/verify/?token={token} \n\nregards, BrowseDocs Team"""
 
-    send_mail_celery.delay(subject, message, recipient_list=[email])
+    send_mail(subject, message, recipient_list=[email])
 
