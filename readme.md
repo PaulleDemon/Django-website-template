@@ -20,24 +20,38 @@ This template can help you save hours of work, allowing you to deliver a product
 - Custom user model.
 - Tailwind css setup for rapid development (note: the tailwind classes are prefixed with `tw-`, to differentiate them)
 
+### Do I need to be an expert to use this?
+A basic understanding of HTML, CSS, and JavaScript is all you need to get started. However, if you want to add custom pages or make more advanced modifications, having at least some foundational knowledge will be really helpful.
+
+### Demo
+Visit the demo site: [Django Demo website](https://django-website-template.vercel.app/)
+
+For admin use
+```
+demo@mail.com
+demo123*
+```
 ### Table of contents
-- [Django website template (production ready)](#django-website-template-production-ready)
-    - [Why use Django website template?](#why-use-django-website-template)
-    - [What features does Django template include?](#what-features-does-django-template-include)
-  - [Local development](#local-development)
+
+- [Why use Django website template?](#why-use-django-website-template)
+- [What features does Django template include?](#what-features-does-django-template-include)
+- [Do I need to be an expert to use this?](#do-i-need-to-be-an-expert-to-use-this)
+  
+- [Local development](#local-development)
     - [Admin superuser](#admin-superuser)
-  - [Customizing](#customizing)
+- [Customizing](#customizing)
     - [Adding title, description to page](#adding-title-description-to-page)
-  - [Deployment:](#deployment)
+- [Deployment:](#deployment)
       - [Create a firebase credential file](#create-a-firebase-credential-file)
       - [Deploying credential file to production](#deploying-credential-file-to-production)
-  - [Images credits](#images-credits)
+- [Images credits](#images-credits)
+
 
 
 
 ## Local development
 
-follow the below steps:
+follow the below steps :
 1. Star the repo: https://github.com/PaulleDemon/Django-website-template
    
 2. Clone the repo
