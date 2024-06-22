@@ -16,6 +16,7 @@ This template can help you save hours of work, allowing you to deliver a product
 - Technical SEO optimization.
 - Dynamic Sitemap.xml
 - Robots.txt
+- Google analytics
 - Custom user model.
 - Tailwind css setup for rapid development (note: the tailwind classes are prefixed with tw-, to differentiate them)
 
