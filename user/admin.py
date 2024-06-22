@@ -37,7 +37,7 @@ class CustomUserChangeForm(UserChangeForm, ModelAdmin):
 
 
 @admin.register(User)
-class CustomUserAdmin(UserAdmin, ModelAdmin):
+class CustomUserAdmin(UserAdmin, admin.ModelAdmin):
 
     form = CustomUserChangeForm
     add_form = CustomUserCreationForm
