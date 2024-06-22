@@ -81,9 +81,6 @@ POSTGRES_HOST=""
 
 POSTGRES_URL=""
 
-REDIS_PROD_HOST=""
-REDIS_PASSWORD=""
-
 PROJECT_ID="" # firebase project id
 BUCKET_NAME=".appspot.com" # firebase storage name
 FIREBASE_CRED_PATH="project/firebase-cred.json"
