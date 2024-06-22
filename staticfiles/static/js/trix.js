@@ -38,7 +38,7 @@ window.addEventListener('trix-file-accept', function(event) {
     const acceptedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']
     if (!acceptedTypes.includes(event.file.type)) {
         event.preventDefault()
-        alert("Only support attachment of jpeg or png files")
+        alert("Only support image files")
     }
 
     // if the id is null, then save the draft before adding the image

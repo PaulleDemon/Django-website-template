@@ -14,6 +14,8 @@ class InlineBlogImgAdmin(admin.StackedInline):
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
     
+    inlines = [InlineBlogImgAdmin]
+
     search_fields = ['title']
     list_display = ['title', 'slug', 'datetime', 'draft']
 

@@ -4,5 +4,5 @@
         "django-html": "html",
     },
     "prettier.configPath": ".vscode/.prettierrc.json",
-
+    "markdown.extension.toc.updateOnSave": false,
 }

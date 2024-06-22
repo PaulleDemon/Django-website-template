@@ -9,17 +9,20 @@ This template can help you save hours of work, allowing you to deliver a product
 ### What features does Django template include?
 - Production ready, you can immediately deploy this to cloud such as Railway.app, Render.com etc.
 - Comes with a landing page that you can modify.
+- Responsive design, forget about making things responsive yourself.
+- Contact us page.
+- 404 page
 - Has blog with Trix WYSIWYG editor built into the admin panel.
 - Technical SEO optimization.
 - Dynamic Sitemap.xml
 - Robots.txt
-- Tailwind css setup, build your site faster with tailwind css
+- Custom user model.
+- Tailwind css setup for rapid development (note: the tailwind classes are prefixed with tw-, to differentiate them)
 
 ### Table of contents
 - [Django website template (production ready)](#django-website-template-production-ready)
     - [Why use Django website template?](#why-use-django-website-template)
     - [What features does Django template include?](#what-features-does-django-template-include)
-    - [Table of contents](#table-of-contents)
   - [Local development](#local-development)
     - [Admin superuser](#admin-superuser)
   - [Customizing](#customizing)
@@ -33,23 +36,26 @@ This template can help you save hours of work, allowing you to deliver a product
 
 ## Local development
 
+follow the below steps:
+1. Star the repo: https://github.com/PaulleDemon/Django-website-template
+   
+2. Clone the repo
+`git clone https://github.com/PaulleDemon/Django-website-template`
 
-Before you start customizing the template follow the below steps:
-1. Install python 3.8 or above.
+3. Install python 3.8 or above.
 https://www.python.org/downloads/
 
-2. Open the template folder and from the terminal change the
+4. Open the template folder and from the terminal change the
 directory to the current working directory.
 `cd home/Template`
 
-3. Install dependencies in an environment (creating an
+5. Install dependencies in an environment (creating an
 enviornment is optional, but recommended)
 ```
 pip install -r requirements.txt
 ```
 
-4. Add a `.env` file inside the project folder with the following
-
+6. Add a `.env` file inside the project folder with the following
 ```py
 DEBUG=1
 PYTHON_VERSION=3.10
@@ -88,19 +94,19 @@ CLOUD_PLATFORM="RAILWAY"
 GOOGLE_ANALYTICS="G-"
 ```
 
-5. Now in your terminal Create databases and Tables using
+7. Now in your terminal Create databases and Tables using
 ```
 python manage.py migrate
 ```
 Your database is created and ready to use.
 
-6. Now run the website from the terminal using.
+8. Now run the website from the terminal using.
 ```py
 python manage.py runserver
 ```
 Your website should be available at: http://localhost:8000/
 
-7. To run Tailwind CSS open a new terminal and run
+9. To run Tailwind CSS open a new terminal and run
 ```py
 python manage.py tailwind start
 ```
@@ -157,6 +163,8 @@ and set
 ```
 DEBUG=0
 ```
+
+**Note:** don't forget to set the sites to your domain instead of example.com in the admin panel
 
 #### Create a firebase credential file
 
