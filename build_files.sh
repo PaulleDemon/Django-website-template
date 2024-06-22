@@ -7,6 +7,9 @@ python3 manage.py collectstatic --noinput
 # Read base64 encoded text from an environment variable
 encoded_text="$FIREBASE_ENCODED"
 
+# Specify the output file path
+output_file="project/firebase-cred.json"
+
 # Use Python to decode the base64 text and convert it to JSON
 python3 - <<EOF
 import base64
@@ -35,6 +38,15 @@ except json.JSONDecodeError as e:
     print(f"Error decoding JSON: {e}", file=sys.stderr)
     sys.exit(1)
 
-# Output the JSON data
-print(json.dumps(json_data, indent=4))
+# Specify the output file path
+output_file = "$output_file"
+
+# Write the JSON data to the output file
+try:
+    with open(output_file, 'w') as f:
+        json.dump(json_data, f, indent=4)
+    print(f"JSON data written to {output_file}")
+except IOError as e:
+    print(f"Error writing JSON to file: {e}", file=sys.stderr)
+    sys.exit(1)
 EOF
