@@ -28,7 +28,7 @@ class CustomUserCreationForm(UserCreationForm, admin.ModelAdmin):
         fields = ()
 
 
-class CustomUserChangeForm(UserChangeForm, ModelAdmin):
+class CustomUserChangeForm(UserChangeForm, admin.ModelAdmin):
 
     class Meta(UserChangeForm.Meta):
         model = User
