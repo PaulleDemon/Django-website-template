@@ -16,7 +16,7 @@ class Blog(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
-    thumbnail = models.ImageField(null=True, blank=True, upload_to='blog/')
+    thumbnail = models.ImageField(null=True, blank=True, upload_to='blogs/')
 
     slug = models.SlugField(blank=True, unique=True)
 
