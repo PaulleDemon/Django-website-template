@@ -26,6 +26,17 @@ class BlogAdmin(admin.ModelAdmin):
 
     autocomplete_fields = ['user']
     
+    fieldsets = (
+      ('Details', {
+          'fields': ('id', 'blog_id', 'title', 'slug', 'thumbnail')
+      }),
+      ('Body', {
+          'fields': ('body', )
+      }),
+      ('Status', {
+          'fields': ('draft', 'datetime')
+      }),
+   )
     
     def get_sub_title(self, obj):
         return obj.title[:60]
