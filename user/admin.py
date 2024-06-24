@@ -11,6 +11,7 @@ from .admingroupform import GroupAdminForm
 admin.site.unregister(Group)
 
 # Create a new Group admin.
+@admin.register(Group)
 class GroupAdmin(admin.ModelAdmin):
     # Use our custom form.
     form = GroupAdminForm
@@ -18,7 +19,6 @@ class GroupAdmin(admin.ModelAdmin):
     filter_horizontal = ['permissions']
 
 # Register the new Group ModelAdmin.
-admin.site.register(Group, GroupAdmin)
 
 
 class CustomUserCreationForm(UserCreationForm, admin.ModelAdmin):

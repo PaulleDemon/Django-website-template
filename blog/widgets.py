@@ -55,12 +55,7 @@ class CSSAdminCode:
 
 
 class TrixEditorWidget(forms.Textarea):
-    def render(self, name, value, attrs=None, renderer=None):
-        attrs = attrs or {}
-        attrs['hidden'] = True
-        html = super().render(name, value, attrs=attrs, renderer=renderer)
-        return mark_safe(f'{html}<trix-editor class="trix-editor" input="{attrs["id"]}"></trix-editor>')
-
+    
     class Media:
         js = [
             # JSCode(),
@@ -70,3 +65,12 @@ class TrixEditorWidget(forms.Textarea):
         css = {
             'all': [CSSAdminCode(), CSSPath()],
         }
+    
+    def render(self, name, value, attrs=None, renderer=None):
+        attrs = attrs or {}
+        attrs['hidden'] = True
+        html = super().render(name, value, attrs=attrs, renderer=renderer)
+        return mark_safe(f'{html}<trix-editor class="trix-editor" input="{attrs["id"]}"></trix-editor>')
+
+    # def format_value(self, value):
+    #     return ""
