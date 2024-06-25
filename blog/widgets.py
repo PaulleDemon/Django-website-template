@@ -36,8 +36,13 @@ class CSSAdminCode:
             """
             <style>
                 .flex-container:has(trix-editor) {
-                    display: block;
+                    display: block !important;
                 }
+
+                .field-body .flex-container{ /* fallback for edge browser */
+                    display: block !important;
+                }
+
                 trix-toolbar .trix-button {
                     background-color: #d1d1d1 !important;
                 }
