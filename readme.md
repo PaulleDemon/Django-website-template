@@ -167,6 +167,12 @@ To add scripts at the end of the elements
 
 ## Deployment:
 
+Deploy to vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FPaulleDemon%2FDjango-website-template&demo-title=Django%20website%20template&demo-description=A%20starters%20template%20for%20django%20developers%2C%20freelancers%20and%20agencies&demo-url=https%3A%2F%2Fdjango-website-template.vercel.app%2F)
+
+or
+
 You can make use of Railway to deploy your own instance. 
 
 <a href="https://railway.app?referralCode=BfMDHP">
@@ -188,7 +194,11 @@ To generate secret key use `from django.core.management.utils import get_random_
 
 **Note:** don't forget to set the sites to your domain instead of example.com in the admin panel
 
-#### Create a firebase credential file
+### Create a firebase credential file
+
+>**Note:** We'll be using firebase for persistent storage, to upload user files. Firebase is pre-configured as there are other firebase services developers may want to use. <br><br> You can also use any of the storage supported by [django-storages](https://github.com/jschneier/django-storages), if you don't want to use firebase.
+
+To use Firebase
 
 1. We use Google storage for storing files. Go to firebase -> storage -> create (make it public)
 
