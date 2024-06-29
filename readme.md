@@ -23,6 +23,9 @@ This template can help you save hours of work, allowing you to deliver a product
 ### Do I need to be an expert in Django to use this?
 A basic understanding of HTML, CSS, and JavaScript is all you need to get started. However, if you want to add custom pages or make more advanced modifications, having at least some foundational knowledge will be really helpful.
 
+### Looking for Django SAAS boiler plates?
+Check out free and open-source [Django saas boilerplate](https://github.com/PaulleDemon/Django-SAAS-Boilerplate)
+
 ### Demo
 Visit the demo site: [Django Demo website](https://django-website-template.vercel.app/)
 
@@ -47,8 +50,6 @@ demo123*
     - [Create a firebase credential file](#create-a-firebase-credential-file)
     - [Deploying credential file to production](#deploying-credential-file-to-production)
 - [Images credits](#images-credits)
-
-
 
 
 
