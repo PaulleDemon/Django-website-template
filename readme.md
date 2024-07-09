@@ -26,6 +26,12 @@ A basic understanding of HTML, CSS, and JavaScript is all you need to get starte
 ### Looking for Django SAAS boiler plates?
 Check out free and open-source [Django saas boilerplate](https://github.com/PaulleDemon/Django-SAAS-Boilerplate)
 
+### Want advance Django boiler plate?
+If you are looking for more advanced features, such as analytics integration, career pages, advanced
+blog integration check out the premium [django templates](https://templates.foxcraft.tech/django-website-templates).
+
+If you need anything custom feel free to contact [Django developer](https://templates.foxcraft.tech/django-developer)
+
 ### Demo
 Visit the demo site: [Django Demo website](https://django-website-template.vercel.app/)
 
