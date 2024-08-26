@@ -26,7 +26,7 @@ A basic understanding of HTML, CSS, and JavaScript is all you need to get starte
 ### Looking for Other boiler plates?
 **Basic non-saas website template:** [Django boilerplate](https://github.com/PaulleDemon/Django-website-template)
 
-**Free and opensource landing pages:** [Free landing pages](https://github.com/PaulleDemon/awesome-landing-pages)
+**Free and open-source landing pages:** [Free landing pages](https://github.com/PaulleDemon/awesome-landing-pages)
 
 
 #### Want advance Django boiler plate?
