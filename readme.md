@@ -7,7 +7,7 @@ Using a Django template can save you a lot of time, which is a huge benefit. Mos
 This template can help you save hours of work, allowing you to deliver a production-ready website in just a few hours.
 
 ### What features does Django template include?
-- Production ready, you can immediately deploy this to cloud such as Railway.app, Render.com etc.
+- Production ready, you can immediately deploy this to cloud such as Vercel, Railway.app, Render.com etc.
 - Comes with a landing page that you can modify.
 - Responsive design, forget about making things responsive yourself.
 - Contact us page.
@@ -23,14 +23,17 @@ This template can help you save hours of work, allowing you to deliver a product
 ### Do I need to be an expert in Django to use this?
 A basic understanding of HTML, CSS, and JavaScript is all you need to get started. However, if you want to add custom pages or make more advanced modifications, having at least some foundational knowledge will be really helpful.
 
-### Looking for Django SAAS boiler plates?
-Check out free and open-source [Django saas boilerplate](https://github.com/PaulleDemon/Django-SAAS-Boilerplate)
+### Looking for Other boiler plates?
+* Check out free and open-source [Django saas boilerplate](https://github.com/PaulleDemon/Django-SAAS-Boilerplate)
 
-### Want advance Django boiler plate?
+* Also check out [Open-source landing pages]()
+
+
+#### Want advance Django boiler plate?
 If you are looking for more advanced features, such as analytics integration, career pages, advanced
 blog integration check out the premium [django templates](https://templates.foxcraft.tech/django-website-templates).
 
-If you need anything custom feel free to contact [Django developer](https://templates.foxcraft.tech/django-developer)
+If you need anything custom feel free to contact [Django developer](https://tally.so/r/woO0Kx)
 
 ### Demo
 Visit the demo site: [Django Demo website](https://django-website-template.vercel.app/)
@@ -80,7 +83,7 @@ enviornment is optional, but recommended)
 pip install -r requirements.txt
 ```
 
-6. Add a `.env` file inside the project folder with the following
+6. Add a `.env` file inside the `project` folder with the following
 ```py
 DEBUG=1
 PYTHON_VERSION=3.10
@@ -223,6 +226,15 @@ base64 firebase-cred.json > encoded.txt
 ```
 Now copy the contents of encoded.txt and paste it in `FIREBASE_ENCODED="wedde"` variable
 
+### Tutorials
+  #### Looking to learn about adding payment to Django?
+  Check out this blog about [adding payment to django](https://dev.to/paul_freeman/adding-payment-to-django-app-4cc9). This should give you an overview about adding payments to Django.
+
+  #### Adding ESP
+  Check out this blog on adding ESP to help you supercharge [transactional emails](https://dev.to/paul_freeman/adding-esp-to-supercharge-your-django-email-4jkp)
+
+  #### Deploying to Vercel
+  Check out this blog for vercel deployment help [Django vercel deployment](https://dev.to/paul_freeman/deploying-django-website-to-vercel-19ed)
 
 ## Images credits
 Images are taken from free to use sites such as 
