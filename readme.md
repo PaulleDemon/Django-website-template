@@ -24,9 +24,9 @@ This template can help you save hours of work, allowing you to deliver a product
 A basic understanding of HTML, CSS, and JavaScript is all you need to get started. However, if you want to add custom pages or make more advanced modifications, having at least some foundational knowledge will be really helpful.
 
 ### Looking for Other boiler plates?
-* Check out free and open-source [Django saas boilerplate](https://github.com/PaulleDemon/Django-SAAS-Boilerplate)
+**Basic non-saas website template:** [Django boilerplate](https://github.com/PaulleDemon/Django-website-template)
 
-* Also check out [Open-source landing pages]()
+**Free and opensource landing pages:** [Free landing pages](https://github.com/PaulleDemon/awesome-landing-pages)
 
 
 #### Want advance Django boiler plate?
